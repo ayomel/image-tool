@@ -1,13 +1,15 @@
-var elBrowse  = document.getElementById("browse"),
+var Browse  = document.getElementById("browse"),
 		useBlob = false && window.URL,
-		elPreview = document.getElementById("preview"),
-		elDropZone = document.getElementById("dropZone"),
-		elFlexZone = document.getElementsByClassName("flexZone");
+		Preview = document.getElementById("preview"),
+		dropZone = document.getElementById("dropZone"),
+		flexZone = document.getElementsByClassName("flexZone"),
+		imageBtn = document.getElementsByClassName("imageA"),
+		imageLI = document.getElementsByClassName("imageLI");
 
 function readImage(file) {
   var reader = new FileReader();
-	var elLI = document.createElement('LI');
-	var elSpan = document.createElement('span');
+	var myLi = document.createElement('LI');
+	var myBtn = document.createElement('BUTTON');
   reader.addEventListener("load", function () {
     // we want to get that image's width and height px values!
     // Since the File Object does not hold the size of an image
@@ -22,16 +24,19 @@ function readImage(file) {
           file.type +' '+ Math.round(file.size/1024) +'KB';
 
 			//setting attributes for the append elements
-			elLI.setAttribute("class", "imageLI");
-			elSpan.setAttribute("class", "imageA");
+			myLi.setAttribute("class", "imageLI");
+			myBtn.setAttribute("class", "imageA");
+			myBtn.setAttribute("class", "btn");
+			myBtn.setAttribute("class", "btn-danger");
+			myBtn.setAttribute("type", "button");
 
 			//innerHTML
-			elSpan.innerHTML = "x";
+			myBtn.innerHTML = "x";
 			// append image and the HTML info string to our `#preview`
-      elPreview.appendChild(elLI);	//elPreview.appendChild(this);
-			elLI.appendChild(this);				//elPreview.insertAdjacentHTML("beforeend", imageInfo + '<br>');
-			elLI.appendChild(elSpan);
-			elLI.insertAdjacentHTML("beforeend", imageInfo + '<br>');
+      Preview.appendChild(myLi);	//Preview.appendChild(this);
+			myLi.appendChild(this);				//Preview.insertAdjacentHTML("beforeend", imageInfo + '<br>');
+			myLi.appendChild(myBtn);
+			myLi.insertAdjacentHTML("beforeend", imageInfo + '<br>');
 
       if (useBlob) {
         // Free some memory for optimal performance
@@ -48,7 +53,7 @@ function readImage(file) {
 // 1.
 // Once the user selects all the files to upload
 // that will trigger a `change` event on the `#browse` input
-elBrowse.addEventListener("change", function() {
+Browse.addEventListener("change", function() {
   // Let's store the FileList Array into a variable:
   // https://developer.mozilla.org/en-US/docs/Web/API/FileList
   var files  = this.files;
@@ -82,7 +87,7 @@ elBrowse.addEventListener("change", function() {
   }
 
 });
-elDropZone.addEventListener("drop", function(e) {
+dropZone.addEventListener("drop", function(e) {
 	e.preventDefault();
 	var files = e.dataTransfer.files;
 	var errors = "";
@@ -97,10 +102,12 @@ elDropZone.addEventListener("drop", function(e) {
 		}
 	}
 });
+
 $(document).ready(function(){
-    // $("#close").click(function(){
-    //   $("#panel").hide();
-    // });
+    $(imageBtn).click(function(){
+      $(this).closet(imageLI).remove();
+			console.log("works");
+    });
 		$('#dropZone').bind('dragover', function(){
       $(this).addClass('drag-over');
     });

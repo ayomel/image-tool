@@ -1,18 +1,10 @@
 var elBrowse  = document.getElementById("browse"),
 		useBlob = false && window.URL,
 		elPreview = document.getElementById("preview"),
-		elDropZone = document.getElementById("dropZone");
+		elDropZone = document.getElementById("dropZone"),
+		elFlexZone = document.getElementsByClassName("flexZone");
 
-$(document).ready(function(){
-		$('#dropZone').bind('dragover', function(){
-        $(this).addClass('drag-over');
-    });
-    $('#dropZone').bind('dragleave', function(){
-        $(this).removeClass('drag-over');
-    });
-});
-
-function readImage (file) {
+function readImage(file) {
   var reader = new FileReader();
 	var elLI = document.createElement('LI');
 	var elSpan = document.createElement('span');
@@ -77,7 +69,7 @@ elBrowse.addEventListener("change", function() {
       var file = files[i];
 			//testing file extension for right file
       if ( (/\.(png|jpeg|jpg|)$/i).test(file.name) ) {
-        readImage( file );
+        readImage(file);
       } else {
         errors += file.name +" Unsupported Image extension\n";
       }
@@ -90,9 +82,29 @@ elBrowse.addEventListener("change", function() {
   }
 
 });
-
+elDropZone.addEventListener("drop", function(e) {
+	e.preventDefault();
+	var files = e.dataTransfer.files;
+	var errors = "";
+	if(files && files[0]) {
+		for (var i = 0; i < files.length; i++) {
+			var file = files[i];
+			if ( (/\.(png|jpeg|jpg|)$/i).test(file.name) ) {
+        readImage(file);
+      } else {
+        errors += file.name +" Unsupported Image extension\n";
+      }
+		}
+	}
+});
 $(document).ready(function(){
-    $("#close").click(function(){
-        $("#panel").hide();
+    // $("#close").click(function(){
+    //   $("#panel").hide();
+    // });
+		$('#dropZone').bind('dragover', function(){
+      $(this).addClass('drag-over');
+    });
+    $('#dropZone').bind('dragleave', function(){
+    	$(this).removeClass('drag-over');
     });
 });

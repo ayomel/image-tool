@@ -3,8 +3,9 @@ var Browse  = document.getElementById("browse"),
 		Preview = document.getElementById("preview"),
 		dropZone = document.getElementById("dropZone"),
 		flexZone = document.getElementsByClassName("flexZone"),
-		imageBtn = document.getElementsByClassName("imageA"),
-		imageLI = document.getElementsByClassName("imageLI");
+		imageBtn = document.getElementsByClassName("imageA")
+		imageLI = document.getElementsByClassName("imageLI"),
+		deleteAll = document.getElementsByClassName("deleteAll");
 
 function readImage(file) {
   var reader = new FileReader();
@@ -25,9 +26,7 @@ function readImage(file) {
 
 			//setting attributes for the append elements
 			myLi.setAttribute("class", "imageLI");
-			myBtn.setAttribute("class", "imageA");
-			myBtn.setAttribute("class", "btn");
-			myBtn.setAttribute("class", "btn-danger");
+			myBtn.setAttribute("class", "btn-danger imageA btn");
 			myBtn.setAttribute("type", "button");
 
 			//innerHTML
@@ -38,6 +37,11 @@ function readImage(file) {
 			myLi.appendChild(myBtn);
 			myLi.insertAdjacentHTML("beforeend", imageInfo + '<br>');
 
+			//remove individual items
+			myBtn.onclick = function() {
+				this.parentNode.remove(this);
+				console.log("damn I'm good");
+			};
       if (useBlob) {
         // Free some memory for optimal performance
         window.URL.revokeObjectURL(image.src);
@@ -50,19 +54,12 @@ function readImage(file) {
   reader.readAsDataURL(file);
 }
 
-// 1.
-// Once the user selects all the files to upload
-// that will trigger a `change` event on the `#browse` input
 Browse.addEventListener("change", function() {
   // Let's store the FileList Array into a variable:
   // https://developer.mozilla.org/en-US/docs/Web/API/FileList
   var files  = this.files;
   // Let's create an empty `errors` String to collect eventual errors into:
   var errors = "";
-
-  // if (!files) {
-  //   errors += "File upload not supported by your browser.";
-  // }
   // Check for `files` (FileList) support and if contains at least one file:
   if (files && files[0]) {
 
@@ -73,7 +70,7 @@ Browse.addEventListener("change", function() {
       // https://developer.mozilla.org/en-US/docs/Web/API/File
       var file = files[i];
 			//testing file extension for right file
-      if ( (/\.(png|jpeg|jpg|)$/i).test(file.name) ) {
+      if ( (/\.(jpeg|jpg|)$/i).test(file.name) ) {
         readImage(file);
       } else {
         errors += file.name +" Unsupported Image extension\n";
@@ -87,6 +84,7 @@ Browse.addEventListener("change", function() {
   }
 
 });
+//essential the same listener as change
 dropZone.addEventListener("drop", function(e) {
 	e.preventDefault();
 	var files = e.dataTransfer.files;
@@ -94,7 +92,7 @@ dropZone.addEventListener("drop", function(e) {
 	if(files && files[0]) {
 		for (var i = 0; i < files.length; i++) {
 			var file = files[i];
-			if ( (/\.(png|jpeg|jpg|)$/i).test(file.name) ) {
+			if ( (/\.(jpeg|jpg|)$/i).test(file.name) ) {
         readImage(file);
       } else {
         errors += file.name +" Unsupported Image extension\n";
@@ -102,15 +100,18 @@ dropZone.addEventListener("drop", function(e) {
 		}
 	}
 });
-
 $(document).ready(function(){
-    $(imageBtn).click(function(){
-      $(this).closet(imageLI).remove();
-			console.log("works");
-    });
+		//when dragover css updates
+		$('.deleteAll').click(function() {
+			while (Preview.hasChildNodes()) {
+				Preview.removeChild(Preview.lastChild);
+			}
+		});
+
 		$('#dropZone').bind('dragover', function(){
       $(this).addClass('drag-over');
     });
+		//when dragleave css updates
     $('#dropZone').bind('dragleave', function(){
     	$(this).removeClass('drag-over');
     });

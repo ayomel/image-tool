@@ -8,9 +8,9 @@ When images are selected, but not uploaded, a preview shows with the following d
   //done mage thumbnails show in proportion, but are scaled down  (Monday)
   //done Image dimensions (width x height)  (Monday)
   //done Image file name  (Monday)
-  Ability to remove individual images 
+  //done Ability to remove individual images 
   //done Ability to add additional images 
-  Ability to clear all images or upload images (Clear All and Upload buttons) 
+  //done Ability to clear all images or upload images (Clear All and Upload buttons) 
 After images are uploaded: 
   Shows a success or error message for each image
   //done unordered list that holds each file and inside the unordered list have a "A" tag with just the letter X

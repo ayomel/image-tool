@@ -17,6 +17,19 @@ li#preview {
 span.imageA {
 	cursor: pointer;
 }
+.deleteAll {
+	float: right;
+}
+button.btn-danger.imageA.btn {
+	color: #fff;
+	background-color: #d9534f;
+	border-color: #d43f3a;
+	border-radius: 20px;
+	height: 16px;
+	width: 16px;
+	line-height: 0.428571;
+	padding: 0;
+}
 .uploader {
 	text-align: center;
 	vertical-align: middle;

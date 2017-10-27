@@ -1,4 +1,5 @@
 var Browse  = document.getElementById("browse"),
+		selectImage = document.getElementById("selectImage")
 		useBlob = false && window.URL,
 		Preview = document.getElementById("preview"),
 		dropZone = document.getElementById("dropZone"),
@@ -84,6 +85,36 @@ Browse.addEventListener("change", function() {
   }
 
 });
+selectImage.addEventListener("change", function() {
+  // Let's store the FileList Array into a variable:
+  // https://developer.mozilla.org/en-US/docs/Web/API/FileList
+  var files  = this.files;
+  // Let's create an empty `errors` String to collect eventual errors into:
+  var errors = "";
+  // Check for `files` (FileList) support and if contains at least one file:
+  if (files && files[0]) {
+
+    // Iterate over every File object in the FileList array
+    for(var i=0; i<files.length; i++) {
+
+      // Let's refer to the current File as a `file` variable
+      // https://developer.mozilla.org/en-US/docs/Web/API/File
+      var file = files[i];
+			//testing file extension for right file
+      if ( (/\.(jpeg|jpg|)$/i).test(file.name) ) {
+        readImage(file);
+      } else {
+        errors += file.name +" Unsupported Image extension\n";
+      }
+    }
+  }
+
+  // Notify the user for any errors (i.e: try uploading a .txt file)
+  if (errors) {
+    alert(errors);
+  }
+
+});
 //essential the same listener as change
 dropZone.addEventListener("drop", function(e) {
 	e.preventDefault();
@@ -107,7 +138,6 @@ $(document).ready(function(){
 				Preview.removeChild(Preview.lastChild);
 			}
 		});
-
 		$('#dropZone').bind('dragover', function(){
       $(this).addClass('drag-over');
     });
@@ -115,4 +145,7 @@ $(document).ready(function(){
     $('#dropZone').bind('dragleave', function(){
     	$(this).removeClass('drag-over');
     });
+		$('#dropZone').on('drop', function(e) {
+			$(this).removeClass('drag-over');
+		});
 });

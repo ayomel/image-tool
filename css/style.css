@@ -78,15 +78,18 @@ span.imageA {
 	float: right;
 }
 button.btn-danger.imageA.btn {
-	color: #fff;
-	background-color: #d9534f;
-	border-color: #d43f3a;
+	color: black;
+	background-color: transparent;
+	border-color: grey;
 	border-radius: 20px;
 	height: 16px;
 	width: 16px;
 	line-height: 0.428571;
 	padding: 0;
 	float: right;
+}
+input#selectImage {
+	width: 100%;
 }
 .uploader {
 	text-align: center;
@@ -117,15 +120,15 @@ input#browse {
 input#browse:hover {
     cursor: pointer;
 }
-.uploader div.browser span {
+.uploader div.browser p {
 	cursor: pointer;
-	color: black;
-	background-color: white;
-	border-color: black;
+	margin-bottom: 0;
 }
-/*.uploader div.browser label:hover {
-    border: 2px solid red;
-}*/
+span.btn.btn-primary.fileinput-button {
+  background-color: transparent;
+  border: 1px solid black;
+}
+
 .dragover {
 	border: 1px solid grey;
 	background-color:#add8e6;

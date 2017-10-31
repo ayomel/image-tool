@@ -20,8 +20,7 @@ function scanFile(file) {
     var image  = new Image();
     image.addEventListener("load", function () {
       // Concatenate our HTML image info
-      var imageInfo = file.name +' '+ image.naturalWidth  +' x '+image.naturalHeight; //+' '+ file.type +' '+ Math.round(file.size/1024) +'KB';
-
+      var imageInfo = file.name +' '+ image.naturalWidth  +' x '+image.naturalHeight;
 			//setting attributes for the append elements
 			myLi.setAttribute("class", "imageLI");
 			myBtn.setAttribute("class", "btn-danger imageA btn");
@@ -38,7 +37,6 @@ function scanFile(file) {
 			//remove individual items
 			myBtn.onclick = function() {
 				this.parentNode.remove(this);
-				console.log("damn I'm good");
 			};
       if (imageURL) {
         // Free some memory for optimal performance

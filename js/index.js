@@ -44,6 +44,7 @@ function scanFile(file) {
       }
     });
     image.src = imageURL ? image.createObjectURL(file) : fileReader.result;
+    console.log(file);
   });
 
   // https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL

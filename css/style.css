@@ -74,9 +74,7 @@ input#select {
 span.imageA {
 	cursor: pointer;
 }
-.deleteAll {
-	float: right;
-}
+
 button.btn-danger.imageA.btn {
 	color: black;
 	background-color: transparent;

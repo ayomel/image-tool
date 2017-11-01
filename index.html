@@ -34,25 +34,27 @@
         <div class="browser">
           <div class="dragndrop">
             <span>DRAG IMAGES HERE</span>
-            <input id="browse" type="file" multiple>
+            <input class="myInput" id="browse" type="file" multiple>
           </div>
           <!-- <input id="select" for="Select images from your computer" type="file" title="foo" multiple> -->
-          <form method="POST" action="myurl">
+          <form id="myForm" enctype="multipart/form-data" method="POST" action="/">
             <span class="btn btn-primary fileinput-button">
               <p style="color:black">SELECT IMAGES FROM YOUR COMPUTER</p>
-                <input id="selectImage" type="file" multiple>
+                <input class="myInput" id="selectImage" type="file" multiple>
               </span>
           </form>
         </div>
       </div>
-      <div class="container" style="margin-bottom: 10px;margin-top: 10px;">
-        <button class="deleteAll btn btn-danger" type="button" name="button">Delete all</button>
-      </div>
       <ul id="preview"></ul>
+      <div class="container" style="margin-bottom: 10px;margin-top: 10px;">
+        <button class="deleteAll btn btn-secondary" type="button" name="button">Clear all</button>
+        <button class="uploadBtn btn btn-secondary" type="button" name="button">Upload</button>
+      </div>
     </div>
 
 
 
 <script src="js/index.js"></script>
+<script src="js/upload.js" type="text/javascript"></script>
 </body>
 </html>

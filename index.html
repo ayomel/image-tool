@@ -34,15 +34,10 @@
         <div class="browser">
           <div class="dragndrop">
             <span>DRAG IMAGES HERE</span>
-            <input class="myInput" id="browse" type="file" multiple>
+            <form id="theForm" method="POST" enctype="multipart/form-data">
+              <input class="myInput" id="browse" type="file" name="file" multiple>
+            </form>
           </div>
-          <!-- <input id="select" for="Select images from your computer" type="file" title="foo" multiple> -->
-          <form id="myForm" enctype="multipart/form-data" method="POST" action="/">
-            <span class="btn btn-primary fileinput-button">
-              <p style="color:black">SELECT IMAGES FROM YOUR COMPUTER</p>
-                <input class="myInput" id="selectImage" type="file" multiple>
-              </span>
-          </form>
         </div>
       </div>
       <ul id="preview"></ul>

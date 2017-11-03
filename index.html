@@ -34,7 +34,7 @@
         <div class="browser">
           <div class="dragndrop">
             <span>DRAG IMAGES HERE</span>
-            <form id="theForm" method="POST" enctype="multipart/form-data">
+            <form id="theForm" method="POST" action="http://ae03b8058ba7111e7835e020da757784-1577133485.us-east-2.elb.amazonaws.com/test" enctype="multipart/form-data">
               <input class="myInput" id="browse" type="file" name="file" multiple>
             </form>
           </div>
@@ -43,7 +43,7 @@
       <ul id="preview"></ul>
       <div class="container" style="margin-bottom: 10px;margin-top: 10px;">
         <button class="deleteAll btn btn-secondary" type="button" name="button">Clear all</button>
-        <button class="uploadBtn btn btn-secondary" type="button" name="button">Upload</button>
+        <button class="uploadBtn btn btn-secondary" type="submit" name="button">Upload</button>
       </div>
     </div>
 

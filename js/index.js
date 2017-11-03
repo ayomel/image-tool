@@ -1,13 +1,15 @@
 const browse  = document.getElementById("browse");
 const selectImage = document.getElementById("selectImage");
-const imageURL = false && window.URL;
+const blob = false && window.URL;
 const preview = document.getElementById("preview");
 const dropZone = document.getElementById("dropZone");
 const flexZone = document.getElementsByClassName("flexZone");
 const imageBtn = document.getElementsByClassName("imageA");
 const imageLI = document.getElementsByClassName("imageLI");
 const deleteAll = document.getElementsByClassName("deleteAll");
-var theFiles = [];
+var fileResults = [];
+var theFile = [];
+
 function scanFile(file) {
   var fileReader = new FileReader();
 	var myLi = document.createElement('LI');
@@ -37,14 +39,14 @@ function scanFile(file) {
 			myBtn.onclick = function() {
 				this.parentNode.remove(this);
 			};
-      if (imageURL) {
+      if (blob) {
         // Free some memory for optimal performance
-        imageURL.revokeObjectURL(image.src);
+        blob.revokeObjectURL(image.src);
       }
     });
-    image.src = imageURL ? image.createObjectURL(file) : fileReader.result;
-    theFiles = theFiles + image;
-    console.log(image);
+    image.src = blob ? image.createObjectURL(file) : fileReader.result;
+    fileResults.push(fileReader);
+    theFile.push(file);
   });
 
   // https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL
@@ -65,7 +67,7 @@ browse.addEventListener("change", function() {
       // https://developer.mozilla.org/en-US/docs/Web/API/File
       var file = files[i];
 			//testing file extension for right file
-      if ( (/\.(jpeg|jpg|)$/i).test(file.name) ) {
+      if ( (/\.(jpeg|jpg|svg|)$/i).test(file.name) ) {
         scanFile(file);
       } else {
         errors += file.name +" Unsupported Image extension\n";
@@ -100,7 +102,7 @@ browse.addEventListener("change", function() {
 //       } else {
 //         errors += file.name +" Unsupported Image extension\n";
 //       }
-//       theFiles = theFiles + file;
+//       fileResults = fileResults + file;
 //     }
 //   }
 //
@@ -131,12 +133,9 @@ dropZone.addEventListener("drop", function(e) {
 });
 $(document).ready(function(){
 		//when dragover css updates
-    $('.uploadBtn').click(function() {
-      console.log(theFiles);
-    });
 		$('.deleteAll').click(function() {
 			while (preview.hasChildNodes()) {
-				preview.removeChild(preview.lastChild);
+				$('#preview').empty();
 			}
 		});
 		$('#dropZone').bind('dragover', function(){

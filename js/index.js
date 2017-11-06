@@ -15,10 +15,6 @@ function scanFile(file) {
 	var myLi = document.createElement('LI');
 	var myBtn = document.createElement('BUTTON');
   fileReader.addEventListener("load", function () {
-    // we want to get that image's width and height px values!
-    // Since the File Object does not hold the size of an image
-    // we need to create a new image and assign it's src, so when
-    // the image is loaded we can calculate it's width and height:
     var image  = new Image();
     image.addEventListener("load", function () {
       // Concatenate our HTML image info
@@ -45,28 +41,18 @@ function scanFile(file) {
       }
     });
     image.src = blob ? image.createObjectURL(file) : fileReader.result;
-    fileResults.push(fileReader);
+    // fileResults.push(fileReader);
+    // console.log(fileResults);
     theFile.push(file);
   });
-
-  // https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL
   fileReader.readAsDataURL(file);
 }
 browse.addEventListener("change", function() {
-  // Let's store the FileList Array into a variable:
-  // https://developer.mozilla.org/en-US/docs/Web/API/FileList
   var files  = this.files;
-  // Let's create an empty `errors` String to collect eventual errors into:
   var errors = "";
-  // Check for `files` (FileList) support and if contains at least one file:
   if (files && files[0]) {
-
-    // Iterate over every File object in the FileList array
     for(var i=0; i<files.length; i++) {
-      // Let's refer to the current File as a `file` variable
-      // https://developer.mozilla.org/en-US/docs/Web/API/File
       var file = files[i];
-			//testing file extension for right file
       if ( (/\.(jpeg|jpg|svg|)$/i).test(file.name) ) {
         scanFile(file);
       } else {
@@ -74,44 +60,11 @@ browse.addEventListener("change", function() {
       }
     }
   }
-
-  // Notify the user for any errors (i.e: try uploading a .txt file)
   if (errors) {
     alert(errors);
   }
 
 });
-// selectImage.addEventListener("change", function() {
-//   // Let's store the FileList Array into a variable:
-//   // https://developer.mozilla.org/en-US/docs/Web/API/FileList
-//   var files  = this.files;
-//   // Let's create an empty `errors` String to collect eventual errors into:
-//   var errors = "";
-//   // Check for `files` (FileList) support and if contains at least one file:
-//   if (files && files[0]) {
-//
-//     // Iterate over every File object in the FileList array
-//     for(var i=0; i<files.length; i++) {
-//
-//       // Let's refer to the current File as a `file` variable
-//       // https://developer.mozilla.org/en-US/docs/Web/API/File
-//       var file = files[i];
-// 			//testing file extension for right file
-//       if ( (/\.(jpeg|jpg|)$/i).test(file.name) ) {
-//         scanFile(file);
-//       } else {
-//         errors += file.name +" Unsupported Image extension\n";
-//       }
-//       fileResults = fileResults + file;
-//     }
-//   }
-//
-//   // Notify the user for any errors (i.e: try uploading a .txt file)
-//   if (errors) {
-//     alert(errors);
-//   }
-//
-// });
 //essential the same listener as change
 dropZone.addEventListener("drop", function(e) {
 	e.preventDefault();

@@ -2,46 +2,62 @@ $(document).ready(function () {
     $('.uploadBtn').click(function() {
       var myFiles = document.getElementById("browse").files;
       for (var i = 0; i < myFiles.length; i++) {
-        var seriesID = myFiles[i].name.split('_')[0];
-
-        getSlug(seriesID);
-        uploadFile(myFiles[i]);
+        getSlug(myFiles[i], function(file) {
+              console.groupCollapsed('getSlug callback');
+              console.log(file);
+              console.groupEnd();
+          if (file.slug) {
+            uploadFile(file, function(data) {
+              console.groupCollapsed('uploadFile callback: '+data.file.slug, data.file.name);
+              console.log(data);
+              console.groupEnd();
+              return;
+            })
+          }
+        });
       }
     });
-
-
-  function getSlug(ID, callback) {
+  function getSlug(file,  callback) {
+    var seriesID = file.name.split('_')[0];
     $.ajax({
       type:'POST',
       url: "https://graphiti-dev-live.smithsonianearthtv.com/graphql",
-      data: '{getSeries(seriesId: "' + ID + '") { slug }}',
-      cache:false,
+      data: '{getSeries(seriesId: "' + seriesID + '") { slug }}',
+      cache: false,
       contentType: false,
       processData: false,
-      success:function(data){
-        console.log(data.data.getSeries.slug);
-      },
-      error: function(){
-        console.log("error");
-      }
+      success:
+        function(data){
+          //check to see if we got a slug and error if not
+          file.slug = data.data.getSeries.slug;
+          callback(file);
+        },
+      error:
+        function(data){
+          callback(data);
+        }
     });
   }
-  function uploadFile(file, slug, callback) {
+  function uploadFile(file, callback) {
+    //slug is file.slug
     var fd = new FormData();
         fd.append('file', file);
         $.ajax({
             type:'POST',
-            url: "http://ae03b8058ba7111e7835e020da757784-1577133485.us-east-2.elb.amazonaws.com/test/" + slug,
+            url: "http://ae03b8058ba7111e7835e020da757784-1577133485.us-east-2.elb.amazonaws.com/test",
             data: fd,
             cache:false,
             contentType: false,
             processData: false,
-            success:function(data){
-                console.log(data);
-            },
-            error: function(){
-                console.log("error");
-            }
+            success:
+              function(data){
+                data.file = file;
+                callback(data);
+              },
+            error:
+              function(){
+                callback(false);
+              }
         });
   }
 });

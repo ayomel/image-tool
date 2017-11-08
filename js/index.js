@@ -14,22 +14,31 @@ function scanFile(file) {
   var fileReader = new FileReader();
 	var myLi = document.createElement('LI');
 	var myBtn = document.createElement('BUTTON');
+  var fileNameSpan = document.createElement('SPAN');
+  var fileDimensionSpan = document.createElement('SPAN');
   fileReader.addEventListener("load", function () {
     var image  = new Image();
     image.addEventListener("load", function () {
       // Concatenate our HTML image info
-      var imageInfo = file.name +' '+ image.naturalWidth  +' x '+image.naturalHeight;
+      var fileName = file.name;
+      var fileDimension = image.naturalWidth  +' x '+image.naturalHeight;
 			//setting attributes for the append elements
 			myLi.setAttribute("class", "imageLI");
 			myBtn.setAttribute("class", "btn-danger imageA btn");
 			myBtn.setAttribute("type", "button");
+      fileNameSpan.setAttribute("class", "fileName");
+      fileDimensionSpan.setAttribute("class", "fileName");
 			//innerHTML
 			myBtn.innerHTML = "x";
+      fileNameSpan.innerHTML = fileName;
+      fileDimensionSpan.innerHTML = fileDimension;
 			// append image and the HTML info string to our `#preview`
       preview.appendChild(myLi);	//preview.appendChild(this);
 			myLi.appendChild(this);				//preview.insertAdjacentHTML("beforeend", imageInfo + '<br>');
 			myLi.appendChild(myBtn);
-			myLi.insertAdjacentHTML("beforeend", imageInfo + '<br>');
+			//myLi.insertAdjacentHTML("beforeend", imageInfo + '<br>');
+      myLi.appendChild(fileNameSpan);
+      myLi.appendChild(fileDimensionSpan);
 
 			//remove individual items
 			myBtn.onclick = function() {

@@ -2,6 +2,9 @@
 	margin: 0;
 	padding: 0;
 }
+.btn {
+	text-transform: uppercase;
+}
 li#preview {
     list-style-type: none;
 }
@@ -14,6 +17,9 @@ li#preview {
 .header img {
 	padding-left: 20px;
 }
+.dragndrop p {
+	text-transform: uppercase;
+}
 form {
 	margin-bottom: 30px;
 }
@@ -22,12 +28,15 @@ section {
   margin-bottom: 15px;
 }
 section.image-upload {
-	background-color: black;
+	background-color: #354f60;
 }
-section.image-upload p {
-	color: white;
-	margin-top: 1rem;
-	font-size: 16px;
+section.image-upload h2 {
+	background: #354f60;
+	color: #fff;
+	padding: 10px;
+	/* margin-bottom: 20px; */
+	text-transform: uppercase;
+	font-size: 18px;
 }
 .fileinput-button {
   position: relative;
@@ -53,6 +62,16 @@ li.imageLI {
 	background: transparent;
 	border: 1px solid rgb(238, 238, 238);
 }
+ul#preview {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: row wrap;
+	-ms-flex-flow: row wrap;
+	flex-flow: row wrap;
+}
 .randomInput {
 	float: right;
 	width: 70px;
@@ -61,6 +80,11 @@ li.imageLI {
 }
 input#select {
 	color: transparent;
+}
+.fileName {
+	display: inline-block;
+	text-align: left;
+	width: 100%;
 }
 #preview img{
 	height: 10vh;
@@ -84,8 +108,9 @@ button.btn-danger.imageA.btn {
 	width: 16px;
 	line-height: 0.428571;
 	padding: 0;
-	float: right;
+	float: left;
 }
+
 input#selectImage {
 	width: 100%;
 }

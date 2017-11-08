@@ -168,6 +168,8 @@ button.btn-danger.imageA.btn {
 	line-height: 0.428571;
 	padding: 0;
 	float: left;
+	margin-top: 150px;
+	display: inline-block;
 }
 
 input#selectImage {

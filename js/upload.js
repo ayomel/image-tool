@@ -1,8 +1,7 @@
 $(document).ready(function () {
     $('.uploadBtn').click(function() {
-      var myFiles = document.getElementById("browse").files;
-      for (var i = 0; i < myFiles.length; i++) {
-        getSlug(myFiles[i], function(file) {
+      for (var i = 0; i < theFile.length; i++) {
+        getSlug(theFile[i], function(file) {
               console.groupCollapsed('getSlug callback');
               console.log(file);
               console.groupEnd();

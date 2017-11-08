@@ -43,7 +43,7 @@ $(document).ready(function () {
         fd.append('file', file);
         $.ajax({
             type:'POST',
-            url: "http://ae03b8058ba7111e7835e020da757784-1577133485.us-east-2.elb.amazonaws.com/test",
+            url: "http://ae03b8058ba7111e7835e020da757784-1577133485.us-east-2.elb.amazonaws.com/test/" + file.slug,
             data: fd,
             cache:false,
             contentType: false,

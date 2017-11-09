@@ -61,6 +61,37 @@
     display: inline-block;
     text-transform: uppercase
 }    
+#smith-earth-cms header #header-wrap #create {
+    float: right
+}
+
+#smith-earth-cms header #header-wrap #create fieldset {
+    margin-bottom: 0
+}
+
+#smith-earth-cms header #header-wrap #create fieldset label {
+    color: #fff;
+    position: relative;
+    top: 9px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-size: 1rem;
+    font-weight: 300;
+    display: inline-block
+}
+h3{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 200;
+    top: 12px;
+    display: inline-block;
+}
+
+
+}
 footer{
 	background: #354f60;
     padding: 30px;
@@ -90,6 +121,65 @@ li#preview {
 }
 form {
 	margin-bottom: 30px;
+}
+form * {
+    outline: none
+}
+
+form input {
+    outline: 0
+}
+
+form fieldset {
+    display: inline-block;
+    margin-bottom: 20px;
+    vertical-align: top;
+    width: -webkit-fill-available;
+}
+
+form fieldset.block-display {
+    display: block;
+    margin-right: 0;
+    margin-bottom: 20px
+}
+
+form fieldset>label {
+
+    position: relative;
+    top: 9px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-size: 1rem;
+    font-weight: 300;
+    display: inline-block;
+}
+
+form fieldset .form-field {
+    background: #fff;
+    padding: 6px 10px;
+    border: 1px solid #aaa;
+    font-size: 14px;
+    font-size: .875rem;
+    border-radius: 0
+}
+
+form fieldset .form-field.long {
+    width: 400px
+}
+
+form fieldset .form-field.short {
+    width: 100px
+}
+
+form fieldset textarea {
+    width: 100%;
+    font-size: 14px;
+    font-size: .875rem;
+    line-height: 18px;
+    padding: 10px;
+    min-height: 80px;
+    border: 1px solid #aaa
 }
 section {
   margin-top: 15px;
@@ -258,3 +348,148 @@ span.btn.btn-primary.fileinput-button {
 	border-bottom: 0px;
 	background-color:rgba(0,0,0,0.3);
 }
+section details .collapse h2:after {
+    content: "";
+    border-top: 10px solid #fff;
+    border-right: 10px solid transparent;
+    border-bottom: 0 solid transparent;
+    border-left: 10px solid transparent;
+    cursor: pointer;
+    right: 10px;
+    position: absolute;
+}
+
+section details .collapse:hover h2 {
+    cursor: pointer
+}
+
+section details .collapse:hover h2:after {
+    border-top: 10px solid rgba(255, 255, 255, 0.6)
+}
+
+section details[open] .collapse h2:after {
+    border-top: 0 solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #fff;
+    border-left: 10px solid transparent;
+    cursor: pointer
+}
+
+section details[open] .collapse:hover h2:after {
+    border-bottom: 10px solid rgba(255, 255, 255, 0.6)
+}
+
+section .collapse {
+    width: 98% !important;
+    position: relative;
+    background: #354f60;
+    padding: 10px 1%;
+    margin-bottom: 20px
+}
+
+section .collapse h2 {
+    color: #fff;
+    width: 90%;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-size: 1.125rem
+}
+summary {
+  display: block;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+.content-wrap {
+    margin: 0 20px 20px
+}
+.previewContainer {
+    padding:20px;
+    text-align: left;
+}
+
+.previewImg {
+    /*padding:20px;*/
+    text-align: left;
+    
+}
+.previewImg li{
+    margin: 20px;
+}
+.previewImg p{
+    text-align: left;
+    font-size: .875rem;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.message{
+    font-size: 10px;
+
+}
+.message span{
+    display: inline-block;
+    text-align: left;
+    width: 100%;
+}
+
+.previewImg img{
+    height: 10vh;
+}
+
+.previewImg hr{
+    background: #354f60;
+    color: #fff;
+    padding: 5px;
+    /*margin-bottom: 20px;*/
+}
+.flex-flow-row-wrap {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+}
+
+.dropdown-menu .dropdown-wrapper {
+    position: relative;
+    display: inline-block;
+    vertical-align: top
+}
+
+.dropdown-menu .dropdown-wrapper select {
+    background: #fff;
+    font-size: 14px;
+    font-size: .875rem;
+    color: #000;
+    border-radius: 0;
+    height: 31px;
+    outline: 0;
+    border: 1px solid #aaa;
+    display: inline-block;
+    vertical-align: top;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 0 42px 2px 10px;
+    cursor: pointer
+}
+
+.dropdown-menu .dropdown-wrapper .arrow-down {
+    border-top: 6px solid #000;
+    border-right: 6px solid transparent;
+    border-bottom: 0 solid transparent;
+    border-left: 6px solid transparent;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 13px
+}
+
+
+
+
+

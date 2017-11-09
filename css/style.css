@@ -11,12 +11,21 @@
 
 #smith-earth-cms header #header-wrap {
     background: #354f60;
-    padding: 20px;
-    height:80px;
+    padding: 20px
+}
+/*#smith-earth-cms header #header-wrap #header-main-wrap{
+	*zoom: 1;
+}
+#smith-earth-cms header #header-wrap #header-main-wrap:after, #smith-earth-cms header #header-wrap #header-main-wrap:before {
+	content: " ";
+    display: table
+}*/
+#smith-earth-cms header #header-wrap, #smith-earth-cms header #header-wrap #header-main-wrap {
+	clear:both;
 }
 
 #smith-earth-cms header #header-wrap #header-main-wrap .logo {
-    float: left;
+    /*float: left;*/
     width: 126px
 }
 
@@ -67,7 +76,7 @@ footer{
 li#preview {
     list-style-type: none;
 }
-.header {
+/*.header {
   width: 100%;
   background-color: #354F60;
   padding-bottom: 15px;
@@ -75,7 +84,7 @@ li#preview {
 }
 .header img {
 	padding-left: 20px;
-}
+}*/
 .dragndrop p {
 	text-transform: uppercase;
 }
@@ -131,6 +140,13 @@ ul#preview {
 	-ms-flex-flow: row wrap;
 	flex-flow: row wrap;
 }
+#preview img{
+	height: 10vh;
+	margin:20px;
+}
+ul#preview li.imageLI img{
+	display:block;
+}
 .randomInput {
 	float: right;
 	width: 70px;
@@ -145,10 +161,7 @@ input#select {
 	text-align: left;
 	width: 100%;
 }
-#preview img{
-	height: 10vh;
-	margin-top: 15px;
-}
+
 #dropzone {
 	height: 600px;
 	text-align: center;
@@ -165,10 +178,7 @@ button.btn-danger.imageA.btn {
 	border-radius: 20px;
 	height: 16px;
 	width: 16px;
-	line-height: 0.428571;
 	padding: 0;
-	float: left;
-	margin-top: 150px;
 	display: inline-block;
 }
 

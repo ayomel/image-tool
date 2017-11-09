@@ -101,7 +101,6 @@ section.image-upload {
 section.image-upload h2 {
 	background: #354f60;
 	color: #fff;
-	padding: 10px;
 	margin-top: 10px;
 	text-transform: uppercase;
 	font-size: 18px;
@@ -189,9 +188,18 @@ button.btn-danger.imageA.btn {
 	background-color: transparent;
 	border-color: grey;
 	border-radius: 20px;
-	height: 16px;
-	width: 16px;
+	height: 20px;
+    width: 20px;
 	padding: 0;
+}
+button.btn-fail {
+	color: #fff;
+    background-color: #e43b36;
+    border-color: #cda2a2;
+    border-radius: 20px;
+    height: 30px;
+    width: 30px;
+    padding: 0;
 }
 
 input#selectImage {

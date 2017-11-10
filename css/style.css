@@ -65,7 +65,7 @@ footer{
 /*    font-size: 1rem;*/
     display: inline-block;
     text-transform: uppercase
-}    
+}
 #smith-earth-cms header #header-wrap #create {
     float: right
 }
@@ -316,6 +316,9 @@ div#dropZone {
 .browser {
 	border-bottom: 1px solid black;
 }
+.noPointEvent {
+  pointer-events: none;
+}
 input#browse {
 	width: 100%;
 	height: 216px;
@@ -344,6 +347,15 @@ span.btn.btn-primary.fileinput-button {
 	border: 1px solid grey;
 	border-bottom: 0px;
 	background-color:rgba(0,0,0,0.3);
+}
+button.btn-success {
+    color: #fff;
+    background-color: green;
+    border-color: #cda2a2;
+    border-radius: 20px;
+    height: 30px;
+    width: 30px;
+    padding: 0;
 }
 section details .collapse h2:after {
     content: "";
@@ -409,6 +421,10 @@ summary::-webkit-details-marker {
 .previewImg {
     padding:20px;
     text-align: left;
+<<<<<<< HEAD
+=======
+
+>>>>>>> c0696345847dd329f2b88b68aed4375712f47db7
 }
 .previewImg img{
     height: 10vh;
@@ -499,6 +515,7 @@ summary::-webkit-details-marker {
     font-size: 14px;
     font-family: sans-serif;
 }
+<<<<<<< HEAD
 
 .instructions {
     width: 100%;
@@ -604,3 +621,5 @@ nav h3 {
 }
 
 
+=======
+>>>>>>> c0696345847dd329f2b88b68aed4375712f47db7

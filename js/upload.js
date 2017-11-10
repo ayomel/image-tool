@@ -1,17 +1,24 @@
 $(document).ready(function () {
     $('.uploadBtn').click(function() {
       for (var i = 0; i < theFile.length; i++) {
+        var btn = document.getElementsByClassName('imageA');
         getSlug(theFile[i], function(file) {
-              console.groupCollapsed('getSlug callback');
-              console.log(file);
-              console.groupEnd();
+              //console.groupCollapsed('getSlug callback');
+              //console.log(file);
           if (file.slug) {
             uploadFile(file, function(data) {
-              console.groupCollapsed('uploadFile callback: '+data.file.slug, data.file.name);
+              //console.groupCollapsed('uploadFile callback: '+data.file.slug, data.file.name);
               console.log(data);
-              console.groupEnd();
+              $(btn).removeClass('btn-danger');
+              $(btn).addClass('btn-success');
+              $(btn).addClass('noPointEvent');
+              $(btn).html('<i class="fa fa-check" aria-hidden="true"></i>');
               return;
             })
+          }
+          else {
+            $(btn).removeClass('btn-danger');
+            $(btn).addClass('btn-fail');
           }
         });
       }
@@ -33,7 +40,7 @@ $(document).ready(function () {
         },
       error:
         function(data){
-          callback(false);
+          callback(data);
         }
     });
   }
@@ -43,7 +50,7 @@ $(document).ready(function () {
         fd.append('file', file);
         $.ajax({
             type:'POST',
-            url: "http://ae03b8058ba7111e7835e020da757784-1577133485.us-east-2.elb.amazonaws.com/test/" + file.slug,
+            url: "https://kanvas-dev.smithsonianearthtv.com/test/" + file.slug,
             data: fd,
             cache:false,
             contentType: false,

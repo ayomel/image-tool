@@ -1,8 +1,7 @@
 $('.filter-label')
    .on('click', function() {
-      $('.dropdown-list').show();
-  })
-});
+      $('.dropdown-list').toggle();
+  });
 //   .on('input', '.dropdown-search', function() {
 //       var target = $(this);
 //       var search = target.val().toLowerCase();

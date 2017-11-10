@@ -538,8 +538,8 @@ nav h3 {
     input[type="search"] {
         padding: 5px 0;
     }
-
-    ul {
+}
+.dropdown-list ul{
         margin: 10px 0;
         max-height: 200px;
         overflow-y: auto;
@@ -548,7 +548,6 @@ nav h3 {
             position: relative;
             top: 2px;
         }
-    }
 }
 .dropdown-list li{
     list-style-type: none;

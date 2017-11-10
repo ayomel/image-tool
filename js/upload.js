@@ -8,7 +8,7 @@ $(document).ready(function () {
           if (file.slug) {
             uploadFile(file, function(data) {
               //console.groupCollapsed('uploadFile callback: '+data.file.slug, data.file.name);
-              //console.lo g(data);
+              console.log(data);
               $(btn).removeClass('btn-danger');
               $(btn).addClass('btn-success');
               $(btn).addClass('noPointEvent');
@@ -27,7 +27,7 @@ $(document).ready(function () {
     var seriesID = file.name.split('_')[0];
     $.ajax({
       type:'POST',
-      url: "https://graphiti-dev-live.smithsonianearthtv.com/graph",
+      url: "https://graphiti-dev-live.smithsonianearthtv.com/graphql",
       data: '{getSeries(seriesId: "' + seriesID + '") { slug }}',
       cache: false,
       contentType: false,

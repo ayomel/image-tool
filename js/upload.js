@@ -50,7 +50,7 @@ $(document).ready(function () {
         fd.append('file', file);
         $.ajax({
             type:'POST',
-            url: "https://kanvas-dev.smithsonianearthtv.com/test/" + file.slug,
+            url: "https://kanvas-dev.smithsonianearthtv.com/demo/" + file.slug,
             data: fd,
             cache:false,
             contentType: false,

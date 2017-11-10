@@ -16,7 +16,7 @@ $(document).ready(function () {
         });
       }
     });
-  function getSlug(file,  callback) {
+  function getSlug(file, callback) {
     var seriesID = file.name.split('_')[0];
     $.ajax({
       type:'POST',
@@ -33,7 +33,7 @@ $(document).ready(function () {
         },
       error:
         function(data){
-          callback(data);
+          callback(false);
         }
     });
   }

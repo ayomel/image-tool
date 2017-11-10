@@ -107,6 +107,7 @@ $(document).ready(function(){
 		$('.deleteAll').click(function() {
 			while (preview.hasChildNodes()) {
 				$('#preview').empty();
+        theFile.length = 0;
 			}
 		});
 		$('#dropZone').bind('dragover', function(){

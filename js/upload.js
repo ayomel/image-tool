@@ -27,7 +27,7 @@ $(document).ready(function () {
     var seriesID = file.name.split('_')[0];
     $.ajax({
       type:'POST',
-      url: "https://graphiti-dev-live.smithsonianearthtv.com/graph",
+      url: "https://graphiti-dev-live.smithsonianearthtv.com/graphql",
       data: '{getSeries(seriesId: "' + seriesID + '") { slug }}',
       cache: false,
       contentType: false,

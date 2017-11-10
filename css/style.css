@@ -528,7 +528,6 @@ nav h3 {
     box-sizing: border-box;
 }
 .dropdown-list {
-    float: left;
     width: 100%;
 
     /*border: 1px solid lightgray;*/

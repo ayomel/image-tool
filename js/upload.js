@@ -4,16 +4,15 @@ $(document).ready(function () {
         var btn = document.getElementsByClassName('imageA');
         getSlug(theFile[i], function(file) {
               //console.groupCollapsed('getSlug callback');
-              //console.log(file);
           if (file.slug) {
             uploadFile(file, function(data) {
               //console.groupCollapsed('uploadFile callback: '+data.file.slug, data.file.name);
               console.log(data);
-              console.log(file);
-              $(btn).removeClass('btn-danger');
-              $(btn).addClass('btn-success');
-              $(btn).addClass('noPointEvent');
-              $(btn).html('<i class="fa fa-check" aria-hidden="true"></i>');
+              //console.log(file);
+              // $(btn).removeClass('btn-danger');
+              // $(btn).addClass('btn-success');
+              // $(btn).addClass('noPointEvent');
+              // $(btn).html('<i class="fa fa-check" aria-hidden="true"></i>');
               return;
             })
           }
@@ -51,7 +50,7 @@ $(document).ready(function () {
         fd.append('file', file);
         $.ajax({
             type:'POST',
-            url: "https://kanvas-dev.smithsonianearthtv.com/demo/" + file.slug,
+            url: "https://kanvas-dev.smithsonianearthtv.com/test/" + file.slug,
             data: fd,
             cache:false,
             contentType: false,

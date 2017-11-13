@@ -52,6 +52,7 @@ function scanFile(file) {
 			//remove individual items
 			myBtn.onclick = function() {
 				this.parentNode.parentElement.parentElement.remove(this);
+        file.remove(this);
 			};
       if (blob) {
         // Free some memory for optimal performance

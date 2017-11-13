@@ -1,5 +1,4 @@
 const browse  = document.getElementById("browse");
-const selectImage = document.getElementById("selectImage");
 const blob = false && window.URL;
 const preview = document.getElementById("preview");
 const dropZone = document.getElementById("dropZone");
@@ -19,12 +18,12 @@ function scanFile(file) {
   var fileNameDiv = document.createElement('DIV');
   var fileNameSpan = document.createElement('SPAN');
   var fileDimensionSpan = document.createElement('SPAN');
-  fileReader.addEventListener("load", function () {
+  fileReader.addEventListener("load", function (e) {
     var image  = new Image();
     image.addEventListener("load", function () {
       // Concatenate our HTML image info
       var fileName = file.name;
-      var fileDimension = image.naturalWidth  +' x '+image.naturalHeight;
+      var fileDimension = image.naturalWidth+' x '+image.naturalHeight;
 			//setting attributes for the append elements
 			myLi.setAttribute("class", "imageLI");
       btnContainer.setAttribute("class", "btnContainer");
@@ -52,7 +51,7 @@ function scanFile(file) {
 			//remove individual items
 			myBtn.onclick = function() {
 				this.parentNode.parentElement.parentElement.remove(this);
-        file.remove(this);
+        console.log(file);
 			};
       if (blob) {
         // Free some memory for optimal performance

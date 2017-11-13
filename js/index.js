@@ -71,7 +71,7 @@ browse.addEventListener("change", function() {
   if (files && files[0]) {
     for(var i=0; i<files.length; i++) {
       var file = files[i];
-      if ( (/\.(jpeg|jpg|svg|)$/i).test(file.name) ) {
+      if ( (/\.(jpeg|jpg|)$/i).test(file.name) ) {
         scanFile(file);
       } else {
         errors += file.name +" Unsupported Image extension\n";

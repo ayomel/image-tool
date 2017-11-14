@@ -5,16 +5,16 @@ $(document).ready(function () {
         getSlug(theFile[i], function(file) {
               //console.groupCollapsed('getSlug callback');
           if (file.slug) {
-            uploadFile(file, function(data) {
-              //console.groupCollapsed('uploadFile callback: '+data.file.slug, data.file.name);
-              console.log(data);
-              //console.log(file);
-              // $(btn).removeClass('btn-danger');
-              // $(btn).addClass('btn-success');
-              // $(btn).addClass('noPointEvent');
-              // $(btn).html('<i class="fa fa-check" aria-hidden="true"></i>');
-              return;
-            })
+            if (file.delete != false) {
+              uploadFile(file, function(data) {
+                console.log(data);
+                // $(btn).removeClass('btn-danger');
+                // $(btn).addClass('btn-success');
+                // $(btn).addClass('noPointEvent');
+                // $(btn).html('<i class="fa fa-check" aria-hidden="true"></i>');
+                return;
+              })
+            }
           }
           else {
             $(btn).removeClass('btn-danger');

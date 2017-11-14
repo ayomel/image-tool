@@ -5,7 +5,7 @@ $(document).ready(function () {
         getSlug(theFile[i], function(file) {
               //console.groupCollapsed('getSlug callback');
           if (file.slug) {
-            if (file.delete != false) {
+            if (file.delete != true) {
               uploadFile(file, function(data) {
                 console.log(data);
                 // $(btn).removeClass('btn-danger');

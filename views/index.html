@@ -1,69 +1,57 @@
 <!DOCTYPE html>
-<head>
-  <title>Image | CMS Image Tool</title>
-   <link rel="icon" type="image/x-icon" href="https://smithsonianearthtv.com/images/favicon.ico">
-   <link rel="icon" type="image/png" href="https://smithsonianearthtv.com/images/favicon.png">
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-  <script type="text/javascript" src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-</head>
-<body id="smith-earth-cms">
-  <header>
-    <div id="header-wrap">
-      <div id="header-main-wrap">
-        <a href="#"><img class="logo" src="images/se-logo-tm.svg" alt="Smithsonian Earth"></a>
-        <h1>CMS IMAGE TOOL</h1>
-      </div>
-    </div>
-  </header>
-    <div class="container">
-      <section class="container">
-        <h1 style="float: left;">IMAGE ADMIN</h1>
-        <div>
-          <input class="randomInput" type="text" placeholder="EPISODE" />
-          <input class="randomInput" type="text" placeholder="SEASON" />
-          <input class="randomInput" type="text" placeholder=SERIES />
+  <head>
+    <title>Image | CMS Image Tool</title>
+    <link rel="icon" type="image/x-icon" href="https://smithsonianearthtv.com/images/favicon.ico">
+    <link rel="icon" type="image/png" href="https://smithsonianearthtv.com/images/favicon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  </head>
+  <body id="smith-earth-cms">
+    <header>
+      <div id="header-wrap">
+        <div id="header-main-wrap">
+          <a href="#"><img class="logo" src="images/se-logo-tm.svg" alt="Smithsonian Earth"></a>
+          <h1>CMS IMAGE TOOL</h1>
         </div>
-      </section>
-      <section class="container image-upload">
-        <h2>Image Upload</h2>
-      </section>
-      <div class="container uploader" id="dropZone">
-        <div class="browser">
-          <div class="dragndrop">
-            <br>
-            <p>Drag Images Here</p>
-            <br>
-						<h3> - or - </h3>
-            <br>
-            <button type="button" class="btn btn-secondary">Select images from your computer</button>
-            <form id="theForm" method="POST" enctype="multipart/form-data">
-              <input class="myInput" id="browse" type="file" name="file" multiple>
-            </form>
+      </div>
+    </header>
+      <div class="container">
+        <section class="container">
+          <h1 style="float: left;">IMAGE ADMIN</h1>
+          <div>
+            <input class="randomInput" type="text" placeholder="EPISODE" />
+            <input class="randomInput" type="text" placeholder="SEASON" />
+            <input class="randomInput" type="text" placeholder=SERIES />
+          </div>
+        </section>
+        <section class="container image-upload">
+          <h2>Image Upload</h2>
+        </section>
+        <div class="container uploader" id="dropZone">
+          <div class="browser">
+            <div class="dragndrop">
+              <br>
+              <p>Drag Images Here</p>
+  						<h3> - or - </h3>
+              <br>
+              <button type="button" class="btn btn-secondary">Select images from your computer</button>
+              <form id="theForm" method="POST" enctype="multipart/form-data">
+                <input class="myInput" id="browse" type="file" name="file" multiple>
+              </form>
+            </div>
           </div>
         </div>
+        <ul id="preview"></ul>
+        <div class="container" style="margin-bottom: 20px;margin-top: 20px;">
+          <button class="deleteAll btn btn-secondary" type="button" name="button">Clear all</button>
+          <button class="uploadBtn btn btn-secondary" type="submit" name="button">Upload</button>
+        </div>
       </div>
-      <ul id="preview"></ul>
-      <div class="container" style="margin-bottom: 20px;margin-top: 20px;">
-        <button class="deleteAll btn btn-secondary" type="button" name="button">Clear all</button>
-        <button class="uploadBtn btn btn-secondary" type="submit" name="button">Upload</button>
-      </div>
-    </div>
-<script src="js/index.js" type="text/javascript"></script>
-<script src="js/upload.js" type="text/javascript"></script>
-<!-- <script src="js/series.js" type="text/javascript"></script> -->
-</body>
-  <!-- <footer>
-      <div id="footer-wrap">
-        <ul id="type">
-          <li>IBMS</li>
-          <li>Cisco/1ms uplink</li>
-          <li>Media Silo</li>
-        </ul>
-      </div>
-      </footer> -->
-
+      <script src="js/index.js" type="text/javascript"></script>
+      <script src="js/upload.js" type="text/javascript"></script>
+  </body>
 </html>

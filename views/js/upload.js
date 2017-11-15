@@ -2,23 +2,24 @@ $(document).ready(function () {
     $('.uploadBtn').click(function() {
       for (var i = 0; i < theFile.length; i++) {
         var btn = document.getElementsByClassName('imageA');
+        if (theFile[i].delete) {
+          console.log(theFile[i].name + ' deleted ignoring');
+          continue;
+        }
         getSlug(theFile[i], function(file) {
-              //console.groupCollapsed('getSlug callback');
-          if (file.slug) {
-            if (file.delete != true) {
-              uploadFile(file, function(data) {
-                console.log(data);
-                // $(btn).removeClass('btn-danger');
-                // $(btn).addClass('btn-success');
-                // $(btn).addClass('noPointEvent');
-                // $(btn).html('<i class="fa fa-check" aria-hidden="true"></i>');
-                return;
-              })
-            }
+          var theId = document.getElementById(file.liID);
+          if (!file.slug) {
+            uploadFile(file, function(data) {
+              $(theId).find("button").removeClass("btn-danger");
+              $(theId).find("button").addClass("btn-success");
+              $(theId).find("button").addClass("noPointEvent");
+              $(theId).find("button").html('<i class="fa fa-check" aria-hidden="true"></i>');
+              return;
+            })
           }
           else {
-            $(btn).removeClass('btn-danger');
-            $(btn).addClass('btn-fail');
+            $(theId).find("button").removeClass("btn-danger");
+            $(theId).find("button").addClass("btn-fail");
           }
         });
       }
@@ -34,7 +35,6 @@ $(document).ready(function () {
       processData: false,
       success:
         function(data){
-          //check to see if we got a slug and error if not
           file.slug = data.data.getSeries.slug;
           callback(file);
         },
@@ -45,7 +45,6 @@ $(document).ready(function () {
     });
   }
   function uploadFile(file, callback) {
-    //slug is file.slug
     var fd = new FormData();
         fd.append('file', file);
         $.ajax({
@@ -67,3 +66,7 @@ $(document).ready(function () {
         });
   }
 });
+// $(btn).removeClass('btn-danger');
+// $(btn).addClass('btn-success');
+// $(btn).addClass('noPointEvent');
+// $(btn).html('<i class="fa fa-check" aria-hidden="true"></i>');

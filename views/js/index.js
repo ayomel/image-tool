@@ -22,9 +22,12 @@ function scanFile(file) {
     var image  = new Image();
     image.addEventListener("load", function () {
       // Concatenate our HTML image info
+      let liID = file.name.split('.')[0];
       var fileName = file.name;
       var fileDimension = image.naturalWidth+' x '+image.naturalHeight;
+      file.liID = liID;
 			//setting attributes for the append elements
+      myLi.setAttribute("id", liID);
 			myLi.setAttribute("class", "imageLI");
       btnContainer.setAttribute("class", "btnContainer");
       myBtnDiv.setAttribute("class", "buttonDiv");
@@ -47,7 +50,6 @@ function scanFile(file) {
       btnContainer.appendChild(fileNameDiv);
       fileNameDiv.appendChild(fileNameSpan);
       fileNameDiv.appendChild(fileDimensionSpan);
-
 			//remove individual items
 			myBtn.onclick = function() {
 				this.parentNode.parentElement.parentElement.remove(this);

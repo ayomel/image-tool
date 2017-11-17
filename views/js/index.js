@@ -73,7 +73,25 @@ browse.addEventListener("change", function() {
   if (files && files[0]) {
     for(var i=0; i<files.length; i++) {
       var file = files[i];
-      if ( (/\.(jpeg|jpg|)$/i).test(file.name) ) {
+      if ( (/\.(svg|)$/i).test(file.name) ) {
+        scanFile(file);
+      } else {
+        errors += file.name +" Unsupported Image extension\n";
+      }
+    }
+  }
+  if (errors) {
+    alert(errors);
+  }
+
+});
+selectImage.addEventListener("change", function() {
+  var files  = this.files;
+  var errors = "";
+  if (files && files[0]) {
+    for(var i=0; i<files.length; i++) {
+      var file = files[i];
+      if ( (/\.(svg|)$/i).test(file.name) ) {
         scanFile(file);
       } else {
         errors += file.name +" Unsupported Image extension\n";
@@ -93,7 +111,7 @@ dropZone.addEventListener("drop", function(e) {
 	if(files && files[0]) {
 		for (var i = 0; i < files.length; i++) {
 			var file = files[i];
-			if ( (/\.(jpeg|jpg|)$/i).test(file.name) ) {
+			if ( (/\.(svg|)$/i).test(file.name) ) {
         scanFile(file);
       } else {
         errors += file.name +" Unsupported Image extension\n";

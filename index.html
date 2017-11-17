@@ -15,37 +15,41 @@
         <img src="./images/logo.png" alt="header">
       </div>
     </header>
-    <section class="container">
-      <h1 style="float: left;">IMAGE ADMIN</h1>
-      <div>
-        <button type="button" class="btn searchButton">
-          <span class="glyphicon glyphicon-search"></span>
-        </button>
-        <input class="randomInput" type="text" placeholder="EPISODE" />
-        <input class="randomInput" type="text" placeholder="SEASON" />
-        <input class="randomInput" type="text" placeholder=SERIES />
+    <div class="container">
+      <section class="container">
+        <h1 style="float: left;">IMAGE ADMIN</h1>
+        <div>
+          <button type="button" class="btn searchButton">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+          <input class="randomInput" type="text" placeholder="EPISODE" />
+          <input class="randomInput" type="text" placeholder="SEASON" />
+          <input class="randomInput" type="text" placeholder=SERIES />
+        </div>
+      </section>
+      <section class="container image-upload">
+        <p>Lockup Upload</p>
+      </section>
+      <div class="container uploader" id="dropZone">
+        <div class="browser">
+          <div class="dragndrop">
+            <span>DRAG SVG HERE</span>
+            <input id="browse" type="file" multiple>
+          </div>
+          <!-- <input id="select" for="Select images from your computer" type="file" title="foo" multiple> -->
+          <form method="POST" action="myurl">
+            <span class="btn btn-primary fileinput-button">
+              <p style="color:black">SELECT SVG FROM YOUR COMPUTER</p>
+                <input id="selectImage" type="file" multiple>
+              </span>
+          </form>
+        </div>
       </div>
-    </section>
-    <section class="container image-upload">
-      <p>Image Upload</p>
-    </section>
-    <div class="container uploader" id="dropZone">
-      <div class="browser">
-        <span>DRAG IMAGES HERE</span>
-        <input id="browse" type="file" multiple>
-        <!-- <input id="select" for="Select images from your computer" type="file" title="foo" multiple> -->
-        <form method="POST" action="myurl">
-          <span class="btn btn-primary fileinput-button">
-            <p style="color:black">SELECT IMAGES FROM YOUR COMPUTER</p>
-              <input id="selectImage" type="file" multiple>
-            </span>
-        </form>
+      <div class="container" style="margin-bottom: 10px;margin-top: 10px;">
+        <button class="deleteAll btn btn-danger" type="button" name="button">Delete all</button>
       </div>
+      <ul id="preview"></ul>
     </div>
-    <div class="container" style="margin-bottom: 10px;margin-top: 10px;">
-      <button class="deleteAll btn btn-danger" type="button" name="button">Delete all</button>
-    </div>
-    <ul class="container" id="preview"></ul>
 
 
 

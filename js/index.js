@@ -20,8 +20,7 @@ function scanFile(file) {
     var image  = new Image();
     image.addEventListener("load", function () {
       // Concatenate our HTML image info
-      var imageInfo = file.name +' '+ image.naturalWidth  +' x '+image.naturalHeight; //+' '+ file.type +' '+ Math.round(file.size/1024) +'KB';
-
+      var imageInfo = file.name +' '+ image.naturalWidth  +' x '+image.naturalHeight;
 			//setting attributes for the append elements
 			myLi.setAttribute("class", "imageLI");
 			myBtn.setAttribute("class", "btn-danger imageA btn");
@@ -30,15 +29,14 @@ function scanFile(file) {
 			//innerHTML
 			myBtn.innerHTML = "x";
 			// append image and the HTML info string to our `#preview`
-      preview.appendChild(myLi);	//preview.appendChild(this);
-			myLi.appendChild(this);				//preview.insertAdjacentHTML("beforeend", imageInfo + '<br>');
+      preview.appendChild(myLi);
+			myLi.appendChild(this);
 			myLi.appendChild(myBtn);
 			myLi.insertAdjacentHTML("beforeend", imageInfo + '<br>');
 
 			//remove individual items
 			myBtn.onclick = function() {
 				this.parentNode.remove(this);
-				console.log("damn I'm good");
 			};
       if (imageURL) {
         // Free some memory for optimal performance
@@ -53,59 +51,36 @@ function scanFile(file) {
 }
 
 browse.addEventListener("change", function() {
-  // Let's store the FileList Array into a variable:
-  // https://developer.mozilla.org/en-US/docs/Web/API/FileList
   var files  = this.files;
-  // Let's create an empty `errors` String to collect eventual errors into:
   var errors = "";
-  // Check for `files` (FileList) support and if contains at least one file:
   if (files && files[0]) {
-
-    // Iterate over every File object in the FileList array
     for(var i=0; i<files.length; i++) {
-      // Let's refer to the current File as a `file` variable
-      // https://developer.mozilla.org/en-US/docs/Web/API/File
       var file = files[i];
-			//testing file extension for right file
-      if ( (/\.(jpeg|jpg|)$/i).test(file.name) ) {
+      if ( (/\.(svg|)$/i).test(file.name) ) {
         scanFile(file);
       } else {
         errors += file.name +" Unsupported Image extension\n";
       }
     }
   }
-
-  // Notify the user for any errors (i.e: try uploading a .txt file)
   if (errors) {
     alert(errors);
   }
 
 });
 selectImage.addEventListener("change", function() {
-  // Let's store the FileList Array into a variable:
-  // https://developer.mozilla.org/en-US/docs/Web/API/FileList
   var files  = this.files;
-  // Let's create an empty `errors` String to collect eventual errors into:
   var errors = "";
-  // Check for `files` (FileList) support and if contains at least one file:
   if (files && files[0]) {
-
-    // Iterate over every File object in the FileList array
     for(var i=0; i<files.length; i++) {
-
-      // Let's refer to the current File as a `file` variable
-      // https://developer.mozilla.org/en-US/docs/Web/API/File
       var file = files[i];
-			//testing file extension for right file
-      if ( (/\.(jpeg|jpg|)$/i).test(file.name) ) {
+      if ( (/\.(svg|)$/i).test(file.name) ) {
         scanFile(file);
       } else {
         errors += file.name +" Unsupported Image extension\n";
       }
     }
   }
-
-  // Notify the user for any errors (i.e: try uploading a .txt file)
   if (errors) {
     alert(errors);
   }
@@ -119,7 +94,7 @@ dropZone.addEventListener("drop", function(e) {
 	if(files && files[0]) {
 		for (var i = 0; i < files.length; i++) {
 			var file = files[i];
-			if ( (/\.(jpeg|jpg|)$/i).test(file.name) ) {
+			if ( (/\.(svg|)$/i).test(file.name) ) {
         scanFile(file);
       } else {
         errors += file.name +" Unsupported Image extension\n";

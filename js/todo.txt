@@ -1,0 +1,16 @@
+Ability to batch upload images by:
+  //done Drag and drop 
+  //done Select images from computer (Worked on Friday)
+  //done selecting multiply images and displaying on the screen (Monday)
+  //done Only JPG and JPEG file types are allowed to be uploaded (Worked on Friday)
+
+When images are selected, but not uploaded, a preview shows with the following data: 
+  //done mage thumbnails show in proportion, but are scaled down  (Monday)
+  //done Image dimensions (width x height)  (Monday)
+  //done Image file name  (Monday)
+  //done Ability to remove individual images 
+  //done Ability to add additional images 
+  //done Ability to clear all images or upload images (Clear All and Upload buttons) 
+After images are uploaded: 
+  Shows a success or error message for each image
+  //done unordered list that holds each file and inside the unordered list have a "A" tag with just the letter X

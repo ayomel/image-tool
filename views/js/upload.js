@@ -8,13 +8,12 @@ $(document).ready(function () {
         }
         getSlug(theFile[i], function(file) {
           var theId = document.getElementById(file.liID);
-          if (file.slug) {
+          if (!file.slug) {
             uploadFile(file, function(data) {
               $(theId).find("button").removeClass("btn-danger");
               $(theId).find("button").addClass("btn-success");
               $(theId).find("button").addClass("noPointEvent");
               $(theId).find("button").html('<i class="fa fa-check" aria-hidden="true"></i>');
-              console.log(data);
               return;
             })
           }

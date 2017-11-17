@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const nunjucks = require('nunjucks');
+const config = require('config');
 
 const app = express();
 
@@ -18,4 +19,5 @@ app.get('/', function(req, res) {
 
 app.listen(3000, function() {
   console.log("Listening to port 3000");
+  console.log(config.get('token.url'));
 })

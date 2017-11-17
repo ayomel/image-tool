@@ -1,0 +1,14 @@
+{
+    "token": {
+        "url": "https://identity-prod.smithsonianearthtv.com/oauth/token",
+        "auth": {
+            "user": "webapp",
+            "pass": "1234"
+        },
+        "form": {
+            "grant_type": "password",
+            "username": "admin",
+            "password": "sm3@rthyadmin"
+        }
+    }
+}

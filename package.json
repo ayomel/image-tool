@@ -1,0 +1,24 @@
+{
+  "name": "drag-and-drop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mhunter11/drag-and-drop.git"
+  },
+  "author": "Melverton Hunter",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mhunter11/drag-and-drop/issues"
+  },
+  "homepage": "https://github.com/mhunter11/drag-and-drop#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "nodemon": "^1.12.1",
+    "nunjucks": "^3.0.1"
+  }
+}

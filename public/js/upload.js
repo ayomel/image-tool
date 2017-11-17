@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  var token = document.getElementById('token').innerHTML;
     $('.uploadBtn').click(function() {
       for (var i = 0; i < theFile.length; i++) {
         var btn = document.getElementsByClassName('imageA');
@@ -51,6 +52,10 @@ $(document).ready(function () {
         $.ajax({
             type:'POST',
             url: "https://kanvas-dev.smithsonianearthtv.com/test/" + file.slug,
+            beforeSend:
+              function(xhr) {
+                xhr.setRequestHeader('Authorization','Bearer ' + token );
+              },
             data: fd,
             cache:false,
             contentType: false,
@@ -67,7 +72,3 @@ $(document).ready(function () {
         });
   }
 });
-// $(btn).removeClass('btn-danger');
-// $(btn).addClass('btn-success');
-// $(btn).addClass('noPointEvent');
-// $(btn).html('<i class="fa fa-check" aria-hidden="true"></i>');

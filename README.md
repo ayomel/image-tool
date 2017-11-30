@@ -4,7 +4,7 @@ open up terminal
 ```
 npm install nodemon -g --save
 ```
-
+then
 ```
 nodemon app.js
 ```

@@ -21,7 +21,7 @@ app.get('/', function(req, res) {
     })
 });
 
-app.listen(3000, function() {
-  console.log("Listening to port 3000");
+app.listen(8080, function() {
+  console.log("Listening to port 8080");
   //se.getToken(function(token) { console.log(token.access_token)});
 })

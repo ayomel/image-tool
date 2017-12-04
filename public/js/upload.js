@@ -49,9 +49,36 @@ $(document).ready(function () {
   function uploadFile(file, callback) {
     var fd = new FormData();
         fd.append('file', file);
+        var seasonNumber = file.name.split('_')[1];
+        var episodeID = file.name.split('_')[2];
+        var imageType = file.name.split('_')[3];
+        if (seasonNumber == 0 || episodeID == 0) {
+          $.ajax({
+              type:'POST',
+              url: "https://kanvas-dev.smithsonianearthtv.com/test/" + file.slug + "/" + imageType,
+              beforeSend:
+                function(xhr) {
+                  xhr.setRequestHeader('Authorization','Bearer ' + token );
+                },
+              data: fd,
+              cache:false,
+              contentType: false,
+              processData: false,
+              success:
+                function(data){
+                  data.file = file;
+                  callback(data);
+                },
+              error:
+                function(){
+                  callback(false);
+                }
+          });
+        }
+        else {
         $.ajax({
             type:'POST',
-            url: "https://kanvas-dev.smithsonianearthtv.com/test/" + file.slug,
+            url: "https://kanvas-dev.smithsonianearthtv.com/test/" + file.slug + "/seasons/" + seasonNumber + "/episodes/" + episodeID + "/" + imageType,
             beforeSend:
               function(xhr) {
                 xhr.setRequestHeader('Authorization','Bearer ' + token );
@@ -70,5 +97,6 @@ $(document).ready(function () {
                 callback(false);
               }
         });
+      }
   }
 });

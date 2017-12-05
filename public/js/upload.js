@@ -28,16 +28,28 @@ $(document).ready(function () {
     });
   function getSlug(file, callback) {
     var seriesID = file.name.split('_')[0];
+    var seasonNumber = file.name.split('_')[1];
+    function getQuery() {
+      if (seriesID == 0 && seasonNumber == 0) {
+        var showID = file.name.split('_')[2];
+        console.log(showID);
+        return '{response:getShow(showId: "' + showID + '"){ slug }}';
+      }
+      else {
+        console.log(seriesID);
+        return '{response:getSeries(seriesId: "' + seriesID + '"){ slug }}';
+      }
+    }
     $.ajax({
       type:'POST',
       url: "https://graphiti-dev-preview.smithsonianearthtv.com/graphql", //url: "https://graphiti-dev-live.smithsonianearthtv.com/graphql",
-      data: '{getSeries(seriesId: "' + seriesID + '") { slug }}',
+      data: getQuery(),
       cache: false,
       contentType: false,
       processData: false,
       success:
         function(data){
-          file.slug = data.data.getSeries.slug;
+          file.slug = data.data.response.slug;
           callback(file);
         },
       error:
@@ -52,33 +64,21 @@ $(document).ready(function () {
         var seasonNumber = file.name.split('_')[1];
         var episodeID = file.name.split('_')[2];
         var imageType = file.name.split('_')[3];
-        if (seasonNumber == 0 || episodeID == 0) {
-          $.ajax({
-              type:'POST',
-              url: "https://kanvas-dev.smithsonianearthtv.com/test/" + file.slug + "/" + imageType,
-              beforeSend:
-                function(xhr) {
-                  xhr.setRequestHeader('Authorization','Bearer ' + token );
-                },
-              data: fd,
-              cache:false,
-              contentType: false,
-              processData: false,
-              success:
-                function(data){
-                  data.file = file;
-                  callback(data);
-                },
-              error:
-                function(){
-                  callback(false);
-                }
-          });
+        function pathImage() {
+          if (seasonNumber == 0 || episodeID == 0) {
+            return "https://kanvas-dev.smithsonianearthtv.com/test/" + file.slug + "/" + imageType;
+          }
+          else if (seasonNumber == 0 && episodeID == 0) {
+            var showID = file.name.split('_')[3];
+            return "https://kanvas-dev.smithsonianearthtv.com/test/jago/" + showID;
+          }
+          else {
+            return "https://kanvas-dev.smithsonianearthtv.com/test/" + file.slug + "/seasons/" + seasonNumber + "/episodes/" + episodeID + "/" + imageType;
+          }
         }
-        else {
         $.ajax({
             type:'POST',
-            url: "https://kanvas-dev.smithsonianearthtv.com/test/" + file.slug + "/seasons/" + seasonNumber + "/episodes/" + episodeID + "/" + imageType,
+            url: pathImage(),
             beforeSend:
               function(xhr) {
                 xhr.setRequestHeader('Authorization','Bearer ' + token );
@@ -97,6 +97,5 @@ $(document).ready(function () {
                 callback(false);
               }
         });
-      }
   }
 });

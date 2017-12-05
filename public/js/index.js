@@ -46,7 +46,6 @@ function scanFile(file) {
       myLi.appendChild(btnContainer);
       btnContainer.appendChild(myBtnDiv);
       myBtnDiv.appendChild(myBtn);
-			//myLi.insertAdjacentHTML("beforeend", imageInfo + '<br>');
       btnContainer.appendChild(fileNameDiv);
       fileNameDiv.appendChild(fileNameSpan);
       fileNameDiv.appendChild(fileDimensionSpan);
@@ -61,11 +60,16 @@ function scanFile(file) {
       }
     });
     image.src = blob ? image.createObjectURL(file) : fileReader.result;
-    // fileResults.push(fileReader);
-    // console.log(fileResults);
     theFile.push(file);
   });
   fileReader.readAsDataURL(file);
+}
+function checkImageName(file) {
+  var seasonNumber = file.name.split('_')[1];
+  var episodeID = file.name.split('_')[2];
+  if (seasonNumber == 0 && episodeID == 0) {
+    alert(file.name + " is not a valid name")
+  }
 }
 browse.addEventListener("change", function() {
   var files  = this.files;
@@ -76,8 +80,9 @@ browse.addEventListener("change", function() {
       if ( (/\.(jpeg|jpg|)$/i).test(file.name) ) {
         scanFile(file);
       } else {
-        errors += file.name +" Unsupported Image extension\n";
+        errors += file.name + " Unsupported Image extension\n";
       }
+      checkImageName(file);
     }
   }
   if (errors) {
@@ -96,8 +101,9 @@ dropZone.addEventListener("drop", function(e) {
 			if ( (/\.(jpeg|jpg|)$/i).test(file.name) ) {
         scanFile(file);
       } else {
-        errors += file.name +" Unsupported Image extension\n";
+        errors += file.name + " Unsupported Image extension\n";
       }
+      checkImageName(file);
 		}
 	}
 	if (errors) {

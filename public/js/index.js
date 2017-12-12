@@ -1,11 +1,11 @@
-const browse  = document.getElementById("browse");
-const blob = false && window.URL;
-const preview = document.getElementById("preview");
-const dropZone = document.getElementById("dropZone");
-const flexZone = document.getElementsByClassName("flexZone");
-const imageBtn = document.getElementsByClassName("imageA");
-const imageLI = document.getElementsByClassName("imageLI");
-const deleteAll = document.getElementsByClassName("deleteAll");
+var browse  = document.getElementById("browse");
+var blob = false && window.URL;
+var preview = document.getElementById("preview");
+var dropZone = document.getElementById("dropZone");
+var flexZone = document.getElementsByClassName("flexZone");
+var imageBtn = document.getElementsByClassName("imageA");
+var imageLI = document.getElementsByClassName("imageLI");
+var deleteAll = document.getElementById("deleteAll");
 var fileResults = [];
 var theFile = [];
 
@@ -31,13 +31,13 @@ function scanFile(file) {
 			myLi.setAttribute("class", "imageLI");
       btnContainer.setAttribute("class", "btnContainer");
       myBtnDiv.setAttribute("class", "buttonDiv");
-			myBtn.setAttribute("class", "btn-danger imageA btn");
+      myBtn.setAttribute("class", "remove remove-32px");
+      myBtn.setAttribute("id", "remove-btn");
 			myBtn.setAttribute("type", "button");
       fileNameDiv.setAttribute("class", "file-name");
       fileNameSpan.setAttribute("class", "fileName");
       fileDimensionSpan.setAttribute("class", "fileName");
 			//innerHTML
-			myBtn.innerHTML = "x";
       fileNameSpan.innerHTML = fileName;
       fileDimensionSpan.innerHTML = fileDimension;
 			// append image and the HTML info string to our `#preview`
@@ -64,25 +64,24 @@ function scanFile(file) {
   });
   fileReader.readAsDataURL(file);
 }
-function checkImageName(file) {
-  var seasonNumber = file.name.split('_')[1];
-  var episodeID = file.name.split('_')[2];
-  if (seasonNumber == 0 && episodeID == 0) {
-    alert(file.name + " is not a valid name")
-  }
-}
+// function checkImageName(file) {
+//   var seasonNumber = file.name.split('_')[1];
+//   var episodeID = file.name.split('_')[2];
+//   if (seasonNumber == 0 && episodeID == 0) {
+//     alert(file.name + " is not a valid name")
+//   }
+// }
 browse.addEventListener("change", function() {
   var files  = this.files;
   var errors = "";
   if (files && files[0]) {
     for(var i=0; i<files.length; i++) {
       var file = files[i];
-      if ( (/\.(jpeg|jpg|)$/i).test(file.name) ) {
+      if ( (/\.(svg|)$/i).test(file.name) ) {
         scanFile(file);
       } else {
         errors += file.name + " Unsupported Image extension\n";
       }
-      checkImageName(file);
     }
   }
   if (errors) {
@@ -98,12 +97,11 @@ dropZone.addEventListener("drop", function(e) {
 	if(files && files[0]) {
 		for (var i = 0; i < files.length; i++) {
 			var file = files[i];
-			if ( (/\.(jpeg|jpg|)$/i).test(file.name) ) {
+			if ( (/\.(svg|)$/i).test(file.name) ) {
         scanFile(file);
       } else {
         errors += file.name + " Unsupported Image extension\n";
       }
-      checkImageName(file);
 		}
 	}
 	if (errors) {
@@ -112,10 +110,11 @@ dropZone.addEventListener("drop", function(e) {
 });
 $(document).ready(function(){
 		//when dragover css updates
-		$('.deleteAll').click(function() {
+		$('#deleteAll').click(function() {
 			while (preview.hasChildNodes()) {
 				$('#preview').empty();
         theFile.length = 0;
+        console.log("Deleted file list");
 			}
 		});
 		$('#dropZone').bind('dragover', function(){
@@ -128,4 +127,15 @@ $(document).ready(function(){
 		$('#dropZone').on('drop', function(e) {
 			$(this).removeClass('drag-over');
 		});
+    $('html').on("dragover", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+    });
+    $('html').on("dragenter", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+    });
+    $('.dragndrop').on("drop", function(e) {
+      e.preventDefault();
+    });
 });

@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  var token = document.getElementById('token').innerHTML;
+  var token = $('#the-token').attr('data-token');
     $('.uploadBtn').click(function() {
       for (var i = 0; i < theFile.length; i++) {
         var btn = document.getElementsByClassName('imageA');
@@ -11,17 +11,16 @@ $(document).ready(function () {
           var theId = document.getElementById(file.liID);
           if (file.slug) {
             uploadFile(file, function(data) {
-              $(theId).find("button").removeClass("btn-danger");
-              $(theId).find("button").addClass("btn-success");
+              $(theId).find("button").removeClass("remove");
+              $(theId).find("button").addClass("checkmark");
               $(theId).find("button").addClass("noPointEvent");
-              $(theId).find("button").html('<i class="fa fa-check" aria-hidden="true"></i>');
               console.log(data);
               return;
             })
           }
           else {
-            $(theId).find("button").removeClass("btn-danger");
-            $(theId).find("button").addClass("btn-fail");
+            $(theId).find("button").removeClass("remove");
+            $(theId).find("button").addClass("x-in-circle");
           }
         });
       }
@@ -30,13 +29,12 @@ $(document).ready(function () {
     var seriesID = file.name.split('_')[0];
     var seasonNumber = file.name.split('_')[1];
     function getQuery() {
+      // if seriesID is 0 as well as season Number it's a show not series
       if (seriesID == 0 && seasonNumber == 0) {
         var showID = file.name.split('_')[2];
-        console.log(showID);
         return '{response:getShow(showId: "' + showID + '"){ slug }}';
       }
       else {
-        console.log(seriesID);
         return '{response:getSeries(seriesId: "' + seriesID + '"){ slug }}';
       }
     }
@@ -53,8 +51,8 @@ $(document).ready(function () {
           callback(file);
         },
       error:
-        function(data){
-          callback(false);
+        function(error){
+          console.log(error);
         }
     });
   }
@@ -65,14 +63,17 @@ $(document).ready(function () {
         var episodeID = file.name.split('_')[2];
         var imageType = file.name.split('_')[3];
         function pathImage() {
-          if (seasonNumber == 0 || episodeID == 0) {
+          //season level images
+          if (episodeID == 0 && seasonNumber == 0) {
+            //series-level image
             return "https://kanvas-dev.smithsonianearthtv.com/test/" + file.slug + "/" + imageType;
           }
-          else if (seasonNumber == 0 && episodeID == 0) {
-            var showID = file.name.split('_')[3];
-            return "https://kanvas-dev.smithsonianearthtv.com/test/jago/" + showID;
+          else if (episodeID == 0) {
+            //season-level image
+            return "https://kanvas-dev.smithsonianearthtv.com/test/" + file.slug + "/seasons/" + seasonNumber + "/" + imageType;
           }
           else {
+            //episode-level image
             return "https://kanvas-dev.smithsonianearthtv.com/test/" + file.slug + "/seasons/" + seasonNumber + "/episodes/" + episodeID + "/" + imageType;
           }
         }

@@ -1,7 +1,0 @@
-series-level:
-[slug]/[image_type] e.g. arctic-secrets/01
-
-episode-level:
-[series slug]/seasons/[season #]/episodes/[episode_id]/[image_type] e.g. /sea-turtle-rescue/seasons/1/episodes/3447753/01
-
-three-part-key: [series_id]_[season_#]_[episode_id]_[image_type] e.g. 1004367_1_3432946_01_hd.jpg

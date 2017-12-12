@@ -1,4 +1,4 @@
-h3{
+h3 {
     padding-top: 15px;
     padding-bottom: 15px;
     text-transform: uppercase;
@@ -7,12 +7,8 @@ h3{
     top: 12px;
     display: inline-block;
 }
-* {
-	margin: 0;
-	padding: 0;
-}
-.btn {
-	text-transform: uppercase;
+#token {
+  display: none;
 }
 li#preview {
     list-style-type: none;
@@ -23,8 +19,23 @@ li#preview {
 form {
 	margin-bottom: 30px;
 }
+.checkmark {
+  background: url(/images/GREEN_Checkmark-in-circle-hover-64x64.svg);
+  cursor: pointer;
+}
+.x-in-circle {
+  background: url(/images/Red_x-in-circle-64x64.svg);
+  cursor: pointer;
+}
+.x-in-circle:hover {
+  background: url(/images/Red_x-in-circle-hover-64x64.svg);
+  cursor: pointer;
+}
 form input {
     outline: 0
+}
+button#selectImage {
+    display: none;
 }
 section {
   margin-top: 15px;
@@ -44,18 +55,8 @@ section.image-upload h2 {
   position: relative;
   overflow: hidden;
 }
-.fileinput-button input {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 0;
-  opacity: 0;
-  -ms-filter: 'alpha(opacity=0)';
-  font-size: 200px;
-  direction: ltr;
-  cursor: pointer;
-}
 li.imageLI {
+  text-align: -webkit-center;
 	list-style-type: none;
 	margin-top: 20px;
 }
@@ -74,24 +75,27 @@ ul#preview {
 	-ms-flex-flow: row wrap;
 	flex-flow: row wrap;
 }
-#preview img{
+#remove-btn {
+  border: 0;
+}
+#preview img {
 	height: 10vh;
     margin-top: 20px;
     margin-left: 10px;
     margin-right: 20px;
     margin-bottom: 10px;
 }
-ul#preview li.imageLI img{
+ul#preview li.imageLI img {
 	display:block;
 }
-.file-name{
+.file-name {
 	display: inline-block;
 	padding-left: 10px;
 }
-.buttonDiv{
+.buttonDiv {
 	display: inline-block;
 }
-.btnContainer{
+.btnContainer {
 	padding:10px;
 }
 .randomInput {
@@ -99,6 +103,9 @@ ul#preview li.imageLI img{
 	width: 70px;
 	text-align: center;
 	height: 24px;
+}
+.preview {
+  margin: 20px;
 }
 input#select {
 	color: transparent;
@@ -108,18 +115,15 @@ input#select {
 	text-align: left;
 	width: 100%;
 }
-span.imageA {
-	cursor: pointer;
-}
-
-button.btn-danger.imageA.btn {
+button.imageA {
 	color: black;
 	background-color: transparent;
 	border-color: grey;
 	border-radius: 20px;
 	height: 20px;
-    width: 20px;
+  width: 20px;
 	padding: 0;
+  cursor: pointer;
 }
 #token {
   display: none;
@@ -147,36 +151,29 @@ input#selectImage {
 	height: 200px;
 }
 div#dropZone {
-    padding: 0;
+  padding: 0;
+  border-bottom: 1px solid black;
 }
 .uploader div.or {
     font-size: 50%;
 }
 
 .uploader div.browser label {
-    border: 2px solid black;
-    padding: 6px 0px;
-    width: 300px;
-}
-.browser {
-	border-bottom: 1px solid black;
+  border: 1px solid #ccc;
+  color: #292b2c;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: .5rem 1rem;
 }
 .noPointEvent {
   pointer-events: none;
 }
 input#browse {
-	width: 100%;
-	height: 216px;
-	position: absolute;
-	opacity: .0;
-	top: -15px;
+  display: none;
 }
-input#browse:hover {
-    cursor: pointer;
-}
-.uploader div.browser p {
-	cursor: pointer;
-	margin-bottom: 0;
+input[type="file"] {
+
 }
 span.btn.btn-primary.fileinput-button {
   background-color: transparent;

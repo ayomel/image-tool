@@ -11,31 +11,30 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   </head>
   <body>
-      <div class="container">
-        <section class="container image-upload">
-          <h2>Image Upload</h2>
-        </section>
-        <div class="container uploader" id="dropZone">
+    <div class="container">
+      <div class="container uploader" id="dropZone">
+        <form id="theForm" method="POST" enctype="multipart/form-data">
           <div class="browser">
             <div class="dragndrop">
               <br>
-              <p>Drag Images Here</p>
-  						<h3> - or - </h3>
+              <p id="the-token" data-token="{{token}}">Drag Images Here</p>
+              <h3> - or - </h3>
               <br>
-              <button type="button" class="btn btn-secondary">Select images from your computer</button>
-              <form id="theForm" method="POST" enctype="multipart/form-data">
-                <input class="myInput" id="browse" type="file" name="file" multiple>
-              </form>
+              <button id="selectImage" type="button" class="btn-standard">Select images from your computer</button>
+              <label class="btn-standard" for="browse">Select Images from your computer</label>
+              <input class="myInput" id="browse" type="file" name="file" multiple>
             </div>
           </div>
-        </div>
-        <ul id="preview"></ul>
-        <div class="container" style="margin-bottom: 20px;margin-top: 20px;">
-          <button class="deleteAll btn btn-secondary" type="button" name="button">Clear all</button>
-          <button class="uploadBtn btn btn-secondary" type="submit" name="button">Upload</button>
-        </div>
+        </form>
       </div>
-      <span id="token">{{ token }}</span>
+    </div>
+    <div class="content-wrap">
+      <ul id="preview"></ul>
+    </div>
+    <div class="preview">
+      <button id="deleteAll" class="btn-standard" type="button" name="button">Clear all</button>
+      <button class="uploadBtn btn-standard" type="submit" name="button">Upload</button>
+    </div>
       <script src="js/index.js" type="text/javascript"></script>
       <script src="js/upload.js" type="text/javascript"></script>
   </body>
